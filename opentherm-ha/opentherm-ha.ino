@@ -127,6 +127,7 @@ void updateData()
   float level = ot.getModulation();
   float bt = ot.getBoilerTemperature();
   float dhwTemp = ot.getDHWTemperature();
+  float outsideTemp = ot.getOutsideTemperature();
 
   client.publish(TEMP_BOILER_TARGET_GET_TOPIC.c_str(), String(op).c_str());
   client.publish(CURRENT_TEMP_GET_TOPIC.c_str(), String(t).c_str());
@@ -139,8 +140,10 @@ void updateData()
   client.publish(STATE_DHW_GET_TOPIC.c_str(), enableHotWater ? "on" : "off");
   client.publish(TEMP_DHW_GET_TOPIC.c_str(), String(dhwTarget).c_str());
   client.publish(ACTUAL_TEMP_DHW_GET_TOPIC.c_str(), String(dhwTemp).c_str());
+  client.publish(OUTSIDE_TEMP_GET_TOPIC.c_str(), String(outsideTemp).c_str());
 
   Serial.print("Current temperature: " + String(t) + " °C ");
+  Serial.print("Outside temperature:" + String(outsideTemp) + " °C ");
   String tempSource = (millis() - lastTempSet > extTempTimeout_ms)
                       ? "(internal sensor)"
                       : "(external sensor)";

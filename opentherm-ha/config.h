@@ -67,3 +67,6 @@ const String SETPOINT_OVERRIDE_RESET_TOPIC = BASE_TOPIC + "setpoint-override/res
 
 // logs topic
 const String LOG_GET_TOPIC = BASE_TOPIC + "log";
+
+// outside temperature topic
+const String OUTSIDE_TEMP_GET_TOPIC = BASE_TOPIC + "outside-temperature/get";
